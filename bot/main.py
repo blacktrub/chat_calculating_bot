@@ -34,7 +34,11 @@ def listen_all_messages(message):
     except ValueError:
         return
 
-    result = decimal.Decimal(OPERATION_MAP[two](one, three)).quantize(decimal.Decimal('.01'), decimal.ROUND_05UP)
+    try:
+        result = decimal.Decimal(OPERATION_MAP[two](one, three)).quantize(decimal.Decimal('.01'), decimal.ROUND_05UP)
+    except ZeroDivisionError:
+        return
+
     bot.reply_to(message, f'= {result}')
 
 
