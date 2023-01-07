@@ -8,14 +8,14 @@ from constants import TOKEN
 bot = telebot.TeleBot(TOKEN)
 
 OPERATION_MAP = {
-    'плюс': operator.add,
-    '+': operator.add,
-    'минус': operator.sub,
-    '-': operator.sub,
-    'разделить': operator.truediv,
-    '/': operator.truediv,
-    'умножить': operator.mul,
-    '*': operator.mul,
+    "плюс": operator.add,
+    "+": operator.add,
+    "минус": operator.sub,
+    "-": operator.sub,
+    "разделить": operator.truediv,
+    "/": operator.truediv,
+    "умножить": operator.mul,
+    "*": operator.mul,
 }
 
 
@@ -35,11 +35,13 @@ def listen_all_messages(message):
         return
 
     try:
-        result = decimal.Decimal(OPERATION_MAP[two](one, three)).quantize(decimal.Decimal('.01'), decimal.ROUND_05UP)
+        result = decimal.Decimal(OPERATION_MAP[two](one, three)).quantize(
+            decimal.Decimal(".01"), decimal.ROUND_05UP
+        )
     except (ZeroDivisionError, decimal.InvalidOperation):
         return
 
-    bot.reply_to(message, f'= {result}')
+    bot.reply_to(message, f"= {result}")
 
 
 bot.polling(none_stop=True)
