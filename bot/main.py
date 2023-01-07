@@ -45,7 +45,7 @@ def calculate(operations: List[str]) -> Decimal:
     while i < len(operations):
         if operations[i] in ("*", "/"):
             first, second = Decimal(operations[i - 1]), Decimal(operations[i + 1])
-            operations[i - 1] = OPERATION_MAP[operations[i]](first, second)
+            operations[i - 1] = str(OPERATION_MAP[operations[i]](first, second))
             operations.pop(i)
             operations.pop(i)
         else:
