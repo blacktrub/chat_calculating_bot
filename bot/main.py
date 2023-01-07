@@ -51,6 +51,9 @@ def calculate(operations: List[str]) -> Decimal:
         else:
             i += 1
 
+    if len(operations) == 1:
+        return Decimal(operations[0])
+
     # Now we can do the rest
     i = 0
     while i < len(operations):
